@@ -7,6 +7,7 @@ import (
 	"errors"
 )
 
+// Errors
 var (
 	UnableToFind = errors.New("cryptoid: Unable to find cryptosystem with that identifier")
 )
@@ -199,7 +200,7 @@ func LookupFromName(name string) interface{} {
 	}
 }
 
-func HashAlgorithmFromHash(hash crypto.Hash) (HashAlgorithm, error) {
+func HashAlgorithmFromCrypto(hash crypto.Hash) (HashAlgorithm, error) {
 	switch hash {
 	case crypto.MD4:
 		return MD4, nil
