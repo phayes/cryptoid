@@ -10,7 +10,7 @@ import (
 // Errors
 var UnableToFind = errors.New("cryptoid: Unable to find cryptosystem with that identifier")
 
-func PublicKeyAlgorithmFromOID(oid asn1.ObjectIdentifier) (PublicKeyAlgorithm, error) {
+func PublicKeyAlgorithmByOID(oid asn1.ObjectIdentifier) (PublicKeyAlgorithm, error) {
 	item := LookupFromOID(oid)
 	algo, ok := item.(PublicKeyAlgorithm)
 	if !ok {
@@ -19,7 +19,7 @@ func PublicKeyAlgorithmFromOID(oid asn1.ObjectIdentifier) (PublicKeyAlgorithm, e
 	return algo, nil
 }
 
-func HashAlgorithmFromOID(oid asn1.ObjectIdentifier) (HashAlgorithm, error) {
+func HashAlgorithmByOID(oid asn1.ObjectIdentifier) (HashAlgorithm, error) {
 	item := LookupFromOID(oid)
 	algo, ok := item.(HashAlgorithm)
 	if !ok {
@@ -28,7 +28,7 @@ func HashAlgorithmFromOID(oid asn1.ObjectIdentifier) (HashAlgorithm, error) {
 	return algo, nil
 }
 
-func SignatureAlgorithmFromOID(oid asn1.ObjectIdentifier) (SignatureAlgorithm, error) {
+func SignatureAlgorithmByOID(oid asn1.ObjectIdentifier) (SignatureAlgorithm, error) {
 	item := LookupFromOID(oid)
 	algo, ok := item.(SignatureAlgorithm)
 	if !ok {
@@ -37,8 +37,12 @@ func SignatureAlgorithmFromOID(oid asn1.ObjectIdentifier) (SignatureAlgorithm, e
 	return algo, nil
 }
 
-func LookupFromOID(oid asn1.ObjectIdentifier) interface{} {
-	switch oid.String() {
+func LookupByOID(string oid) interface{} {
+	if len(oid) == 0 {
+		return nil
+	}
+
+	switch oid {
 	case "1.2.840.113549.1.1.1":
 		return RSA
 	case "1.2.840.10040.4.1":
@@ -104,7 +108,7 @@ func LookupFromOID(oid asn1.ObjectIdentifier) interface{} {
 	}
 }
 
-func PublicKeyAlgorithmFromName(name string) (PublicKeyAlgorithm, error) {
+func PublicKeyAlgorithmByName(name string) (PublicKeyAlgorithm, error) {
 	item := LookupFromName(name)
 	algo, ok := item.(PublicKeyAlgorithm)
 	if !ok {
@@ -113,7 +117,7 @@ func PublicKeyAlgorithmFromName(name string) (PublicKeyAlgorithm, error) {
 	return algo, nil
 }
 
-func HashAlgorithmFromName(name string) (HashAlgorithm, error) {
+func HashAlgorithmByName(name string) (HashAlgorithm, error) {
 	item := LookupFromName(name)
 	algo, ok := item.(HashAlgorithm)
 	if !ok {
@@ -122,7 +126,7 @@ func HashAlgorithmFromName(name string) (HashAlgorithm, error) {
 	return algo, nil
 }
 
-func SignatureAlgorithmFromName(name string) (SignatureAlgorithm, error) {
+func SignatureAlgorithmByName(name string) (SignatureAlgorithm, error) {
 	item := LookupFromName(name)
 	algo, ok := item.(SignatureAlgorithm)
 	if !ok {
@@ -131,7 +135,7 @@ func SignatureAlgorithmFromName(name string) (SignatureAlgorithm, error) {
 	return algo, nil
 }
 
-func LookupFromName(name string) interface{} {
+func LookupByName(name string) interface{} {
 	switch name {
 	case "RSA":
 		return RSA
@@ -198,7 +202,7 @@ func LookupFromName(name string) interface{} {
 	}
 }
 
-func HashAlgorithmFromCrypto(hash crypto.Hash) (HashAlgorithm, error) {
+func HashAlgorithmByCrypto(hash crypto.Hash) (HashAlgorithm, error) {
 	switch hash {
 	case crypto.MD4:
 		return MD4, nil
@@ -227,7 +231,7 @@ func HashAlgorithmFromCrypto(hash crypto.Hash) (HashAlgorithm, error) {
 	}
 }
 
-func SignatureAlgorithmFromX509(sig x509.SignatureAlgorithm) (SignatureAlgorithm, error) {
+func SignatureAlgorithmByX509(sig x509.SignatureAlgorithm) (SignatureAlgorithm, error) {
 	switch sig {
 	case x509.MD2WithRSA:
 		return MD2WithRSA, nil
