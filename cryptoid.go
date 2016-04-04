@@ -37,6 +37,8 @@ var RSA = PublicKeyAlgorithm{
 	OID:       asn1.ObjectIdentifier{1, 2, 840, 113549, 1, 1, 1},
 	OIDString: "{iso(1) member-body(2) us(840) rsadsi(113549) pkcs(1) 1}",
 }
+
+// RFC 3279, 2.3 Public Key Algorithms
 var DSA = PublicKeyAlgorithm{
 	Name:      "DSA",
 	OID:       asn1.ObjectIdentifier{1, 2, 840, 10040, 4, 1},
@@ -75,6 +77,8 @@ var MD5 = HashAlgorithm{
 	OIDString: "{iso(1) member-body(2) us(840) rsadsi(113549) digestAlgorithm(2) 5}",
 	Hash:      crypto.MD5,
 }
+
+// RFC 3370, Cryptographic Message Syntax (CMS) Algorithms
 var SHA1 = HashAlgorithm{
 	Name:      "SHA1",
 	OID:       asn1.ObjectIdentifier{1, 3, 14, 3, 2, 26},
@@ -97,12 +101,16 @@ var SHA256 = HashAlgorithm{
 	OIDString: "{joint-iso-itu-t(2) country(16) us(840) organization(1) gov(101) csor(3) nistalgorithm(4) hashalgs(2) 1}",
 	Hash:      crypto.SHA256,
 }
+
+// RFC 3560, Use of the RSAES-OAEP Key Transport Algorithm in the Cryptographic Message Syntax (CMS)
 var SHA384 = HashAlgorithm{
 	Name:      "SHA384",
 	OID:       asn1.ObjectIdentifier{2, 16, 840, 1, 101, 3, 4, 2, 2},
 	OIDString: "{joint-iso-itu-t(2) country(16) us(840) organization(1) gov(101) csor(3) nistalgorithm(4) hashalgs(2) 2}",
 	Hash:      crypto.SHA384,
 }
+
+// RFC 3560, Use of the RSAES-OAEP Key Transport Algorithm in the Cryptographic Message Syntax (CMS)
 var SHA512 = HashAlgorithm{
 	Name:      "SHA512",
 	OID:       asn1.ObjectIdentifier{2, 16, 840, 1, 101, 3, 4, 2, 3},
@@ -117,29 +125,39 @@ var SHA3_224 = HashAlgorithm{
 	OIDString: "{joint-iso-itu-t(2) country(16) us(840) organization(1) gov(101) csor(3) nistalgorithm(4) hashalgs(2) 7}",
 	Hash:      crypto.SHA3_256,
 }
+
+// RFC for SHA-3 is pending
 var SHA3_256 = HashAlgorithm{
 	Name:      "SHA3-256",
 	OID:       asn1.ObjectIdentifier{2, 16, 840, 1, 101, 3, 4, 2, 8},
 	OIDString: "{joint-iso-itu-t(2) country(16) us(840) organization(1) gov(101) csor(3) nistalgorithm(4) hashalgs(2) 8}",
 	Hash:      crypto.SHA3_256,
 }
+
+// RFC for SHA-3 is pending
 var SHA3_384 = HashAlgorithm{
 	Name:      "SHA3-384",
 	OID:       asn1.ObjectIdentifier{2, 16, 840, 1, 101, 3, 4, 2, 9},
 	OIDString: "{joint-iso-itu-t(2) country(16) us(840) organization(1) gov(101) csor(3) nistalgorithm(4) hashalgs(2) 9}",
 	Hash:      crypto.SHA3_384,
 }
+
+// RFC for SHA-3 is pending
 var SHA3_512 = HashAlgorithm{
 	Name:      "SHA3-256",
 	OID:       asn1.ObjectIdentifier{2, 16, 840, 1, 101, 3, 4, 2, 10},
 	OIDString: "{joint-iso-itu-t(2) country(16) us(840) organization(1) gov(101) csor(3) nistalgorithm(4) hashalgs(2) 10}",
 	Hash:      crypto.SHA3_512,
 }
+
+// RFC for SHA-3 is pending
 var SHAKE128 = HashAlgorithm{
 	Name:      "SHAKE128",
 	OID:       asn1.ObjectIdentifier{2, 16, 840, 1, 101, 3, 4, 2, 11},
 	OIDString: "{joint-iso-itu-t(2) country(16) us(840) organization(1) gov(101) csor(3) nistalgorithm(4) hashalgs(2) 11}",
 }
+
+// RFC for SHA-3 is pending
 var SHAKE256 = HashAlgorithm{
 	Name:      "SHAKE256",
 	OID:       asn1.ObjectIdentifier{2, 16, 840, 1, 101, 3, 4, 2, 12},
@@ -158,6 +176,8 @@ var MD2WithRSA = SignatureAlgorithm{
 	PublicKeyAlgorithm: RSA,
 	HashAlgorithm:      MD2,
 }
+
+// RFC 3279 2.2.1 RSA Signature Algorithms
 var MD4WithRSA = SignatureAlgorithm{
 	Name:               "MD4-RSA",
 	OID:                asn1.ObjectIdentifier{1, 2, 840, 113549, 1, 1, 3},
@@ -166,6 +186,8 @@ var MD4WithRSA = SignatureAlgorithm{
 	PublicKeyAlgorithm: RSA,
 	HashAlgorithm:      MD4,
 }
+
+// RFC 3279 2.2.1 RSA Signature Algorithms
 var MD5WithRSA = SignatureAlgorithm{
 	Name:               "MD5-RSA",
 	OID:                asn1.ObjectIdentifier{1, 2, 840, 113549, 1, 1, 4},
@@ -174,6 +196,8 @@ var MD5WithRSA = SignatureAlgorithm{
 	PublicKeyAlgorithm: RSA,
 	HashAlgorithm:      MD5,
 }
+
+// RFC 3279 2.2.1 RSA Signature Algorithms
 var SHA1WithRSA = SignatureAlgorithm{
 	Name:               "SHA1-RSA",
 	OID:                asn1.ObjectIdentifier{1, 2, 840, 113549, 1, 1, 5},
@@ -192,6 +216,8 @@ var SHA256WithRSA = SignatureAlgorithm{
 	PublicKeyAlgorithm: RSA,
 	HashAlgorithm:      SHA256,
 }
+
+// RFC 4055 5 PKCS #1 Version 1.5
 var SHA384WithRSA = SignatureAlgorithm{
 	Name:               "SHA384-RSA",
 	OID:                asn1.ObjectIdentifier{1, 2, 840, 113549, 1, 1, 12},
@@ -200,6 +226,8 @@ var SHA384WithRSA = SignatureAlgorithm{
 	PublicKeyAlgorithm: RSA,
 	HashAlgorithm:      SHA384,
 }
+
+// RFC 4055 5 PKCS #1 Version 1.5
 var SHA512WithRSA = SignatureAlgorithm{
 	Name:               "SHA512-RSA",
 	OID:                asn1.ObjectIdentifier{1, 2, 840, 113549, 1, 1, 13},
@@ -248,6 +276,8 @@ var ECDSAWithSHA256 = SignatureAlgorithm{
 	PublicKeyAlgorithm: ECDSA,
 	HashAlgorithm:      SHA256,
 }
+
+// RFC 5758 3.2 ECDSA Signature Algorithm
 var ECDSAWithSHA384 = SignatureAlgorithm{
 	Name:               "ECDSA-SHA384",
 	OID:                asn1.ObjectIdentifier{1, 2, 840, 10045, 4, 3, 3},
@@ -256,6 +286,8 @@ var ECDSAWithSHA384 = SignatureAlgorithm{
 	PublicKeyAlgorithm: ECDSA,
 	HashAlgorithm:      SHA384,
 }
+
+// RFC 5758 3.2 ECDSA Signature Algorithm
 var ECDSAWithSHA512 = SignatureAlgorithm{
 	Name:               "ECDSA-SHA512",
 	OID:                asn1.ObjectIdentifier{1, 2, 840, 10045, 4, 3, 4},

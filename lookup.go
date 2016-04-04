@@ -8,9 +8,7 @@ import (
 )
 
 // Errors
-var (
-	UnableToFind = errors.New("cryptoid: Unable to find cryptosystem with that identifier")
-)
+var UnableToFind = errors.New("cryptoid: Unable to find cryptosystem with that identifier")
 
 func PublicKeyAlgorithmFromOID(oid asn1.ObjectIdentifier) (PublicKeyAlgorithm, error) {
 	item := LookupFromOID(oid)
