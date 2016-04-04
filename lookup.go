@@ -3,15 +3,14 @@ package cryptoid
 import (
 	"crypto"
 	"crypto/x509"
-	"encoding/asn1"
 	"errors"
 )
 
 // Errors
 var UnableToFind = errors.New("cryptoid: Unable to find cryptosystem with that identifier")
 
-func PublicKeyAlgorithmByOID(oid asn1.ObjectIdentifier) (PublicKeyAlgorithm, error) {
-	item := LookupFromOID(oid)
+func PublicKeyAlgorithmByOID(oid string) (PublicKeyAlgorithm, error) {
+	item := LookupByOID(oid)
 	algo, ok := item.(PublicKeyAlgorithm)
 	if !ok {
 		return PublicKeyAlgorithm{}, UnableToFind
@@ -19,8 +18,8 @@ func PublicKeyAlgorithmByOID(oid asn1.ObjectIdentifier) (PublicKeyAlgorithm, err
 	return algo, nil
 }
 
-func HashAlgorithmByOID(oid asn1.ObjectIdentifier) (HashAlgorithm, error) {
-	item := LookupFromOID(oid)
+func HashAlgorithmByOID(oid string) (HashAlgorithm, error) {
+	item := LookupByOID(oid)
 	algo, ok := item.(HashAlgorithm)
 	if !ok {
 		return HashAlgorithm{}, UnableToFind
@@ -28,8 +27,8 @@ func HashAlgorithmByOID(oid asn1.ObjectIdentifier) (HashAlgorithm, error) {
 	return algo, nil
 }
 
-func SignatureAlgorithmByOID(oid asn1.ObjectIdentifier) (SignatureAlgorithm, error) {
-	item := LookupFromOID(oid)
+func SignatureAlgorithmByOID(oid string) (SignatureAlgorithm, error) {
+	item := LookupByOID(oid)
 	algo, ok := item.(SignatureAlgorithm)
 	if !ok {
 		return SignatureAlgorithm{}, UnableToFind
@@ -37,7 +36,7 @@ func SignatureAlgorithmByOID(oid asn1.ObjectIdentifier) (SignatureAlgorithm, err
 	return algo, nil
 }
 
-func LookupByOID(string oid) interface{} {
+func LookupByOID(oid string) interface{} {
 	if len(oid) == 0 {
 		return nil
 	}
@@ -109,7 +108,7 @@ func LookupByOID(string oid) interface{} {
 }
 
 func PublicKeyAlgorithmByName(name string) (PublicKeyAlgorithm, error) {
-	item := LookupFromName(name)
+	item := LookupByName(name)
 	algo, ok := item.(PublicKeyAlgorithm)
 	if !ok {
 		return PublicKeyAlgorithm{}, UnableToFind
@@ -118,7 +117,7 @@ func PublicKeyAlgorithmByName(name string) (PublicKeyAlgorithm, error) {
 }
 
 func HashAlgorithmByName(name string) (HashAlgorithm, error) {
-	item := LookupFromName(name)
+	item := LookupByName(name)
 	algo, ok := item.(HashAlgorithm)
 	if !ok {
 		return HashAlgorithm{}, UnableToFind
@@ -127,7 +126,7 @@ func HashAlgorithmByName(name string) (HashAlgorithm, error) {
 }
 
 func SignatureAlgorithmByName(name string) (SignatureAlgorithm, error) {
-	item := LookupFromName(name)
+	item := LookupByName(name)
 	algo, ok := item.(SignatureAlgorithm)
 	if !ok {
 		return SignatureAlgorithm{}, UnableToFind
