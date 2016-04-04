@@ -17,7 +17,7 @@ func LookupPublicKeyAlgorithmFromOID(oid asn1.ObjectIdentifier) (PublicKeyAlgori
 	if !ok {
 		return PublicKeyAlgorithm{}, ErrNotFound
 	}
-	return algo
+	return algo, nil
 }
 
 func LookupHashAlgorithmFromOID(oid asn1.ObjectIdentifier) (HashAlgorithm, error) {
@@ -26,7 +26,7 @@ func LookupHashAlgorithmFromOID(oid asn1.ObjectIdentifier) (HashAlgorithm, error
 	if !ok {
 		return HashAlgorithm{}, ErrNotFound
 	}
-	return algo
+	return algo, nil
 }
 
 func LookupSignatureAlgorithmFromOID(oid asn1.ObjectIdentifier) (SignatureAlgorithm, error) {
@@ -35,11 +35,11 @@ func LookupSignatureAlgorithmFromOID(oid asn1.ObjectIdentifier) (SignatureAlgori
 	if !ok {
 		return SignatureAlgorithm{}, ErrNotFound
 	}
-	return algo
+	return algo, nil
 }
 
-func LookupFromOID(asn1.ObjectIdentifier) interface{} {
-	switch asn1.ObjectIdentifier.String() {
+func LookupFromOID(oid asn1.ObjectIdentifier) interface{} {
+	switch oid.String() {
 	case "1.2.840.113549.1.1.1":
 		return RSA
 	case "1.2.840.10040.4.1":
@@ -106,30 +106,30 @@ func LookupFromOID(asn1.ObjectIdentifier) interface{} {
 }
 
 func LookupPublicKeyAlgorithmFromName(name string) (PublicKeyAlgorithm, error) {
-	item := LookupFromName(oid)
+	item := LookupFromName(name)
 	algo, ok := item.(PublicKeyAlgorithm)
 	if !ok {
 		return PublicKeyAlgorithm{}, ErrNotFound
 	}
-	return algo
+	return algo, nil
 }
 
 func LookupHashAlgorithmFromName(name string) (HashAlgorithm, error) {
-	item := LookupFromName(oid)
+	item := LookupFromName(name)
 	algo, ok := item.(HashAlgorithm)
 	if !ok {
 		return HashAlgorithm{}, ErrNotFound
 	}
-	return algo
+	return algo, nil
 }
 
 func LookupSignatureAlgorithmFromName(name string) (SignatureAlgorithm, error) {
-	item := LookupFromName(oid)
+	item := LookupFromName(name)
 	algo, ok := item.(SignatureAlgorithm)
 	if !ok {
 		return SignatureAlgorithm{}, ErrNotFound
 	}
-	return algo
+	return algo, nil
 }
 
 func LookupFromName(name string) interface{} {
