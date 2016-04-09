@@ -144,7 +144,7 @@ var SHA3_384 = HashAlgorithm{
 
 // RFC for SHA-3 is pending
 var SHA3_512 = HashAlgorithm{
-	Name:      "SHA3-256",
+	Name:      "SHA3-512",
 	OID:       asn1.ObjectIdentifier{2, 16, 840, 1, 101, 3, 4, 2, 10},
 	OIDString: "{joint-iso-itu-t(2) country(16) us(840) organization(1) gov(101) csor(3) nistalgorithm(4) hashalgs(2) 10}",
 	Hash:      crypto.SHA3_512,
