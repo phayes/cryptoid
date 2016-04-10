@@ -158,13 +158,13 @@ func LookupByName(name string) interface{} {
 		return SHA384
 	case "SHA512":
 		return SHA512
-	case "SHA3_224":
+	case "SHA3-224":
 		return SHA3_224
-	case "SHA3_256":
+	case "SHA3-256":
 		return SHA3_256
-	case "SHA3_384":
+	case "SHA3-384":
 		return SHA3_384
-	case "SHA3_512":
+	case "SHA3-512":
 		return SHA3_512
 	case "SHAKE128":
 		return SHAKE128
