@@ -204,27 +204,27 @@ func LookupByName(name string) interface{} {
 func HashAlgorithmByCrypto(hash crypto.Hash) HashAlgorithm {
 	switch hash {
 	case crypto.MD4:
-		return MD4, nil
+		return MD4
 	case crypto.MD5:
-		return MD5, nil
+		return MD5
 	case crypto.SHA1:
-		return SHA1, nil
+		return SHA1
 	case crypto.SHA224:
-		return SHA224, nil
+		return SHA224
 	case crypto.SHA256:
-		return SHA256, nil
+		return SHA256
 	case crypto.SHA384:
-		return SHA384, nil
+		return SHA384
 	case crypto.SHA512:
-		return SHA512, nil
+		return SHA512
 	case crypto.SHA3_224:
-		return SHA3_224, nil
+		return SHA3_224
 	case crypto.SHA3_256:
-		return SHA3_256, nil
+		return SHA3_256
 	case crypto.SHA3_384:
-		return SHA3_384, nil
+		return SHA3_384
 	case crypto.SHA3_512:
-		return SHA3_512, nil
+		return SHA3_512
 	default:
 		panic("Invalid crypto.Hash") // This shouldn't be possible
 	}
