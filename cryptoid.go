@@ -19,6 +19,13 @@ type HashAlgorithm struct {
 	Hash      crypto.Hash
 }
 
+// Satisfies crypto.SignerOpts interface for signing digests
+// You can use a cryptoid.HashAlgorithm directly when
+// using a crypto.Signer interface to sign digests.
+func (h HashAlgorithm) HashFunc() crypto.Hash {
+	return h.Hash
+}
+
 type SignatureAlgorithm struct {
 	Name               string
 	OID                asn1.ObjectIdentifier
