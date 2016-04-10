@@ -201,7 +201,7 @@ func LookupByName(name string) interface{} {
 	}
 }
 
-func HashAlgorithmByCrypto(hash crypto.Hash) (HashAlgorithm, error) {
+func HashAlgorithmByCrypto(hash crypto.Hash) HashAlgorithm {
 	switch hash {
 	case crypto.MD4:
 		return MD4, nil
@@ -226,7 +226,7 @@ func HashAlgorithmByCrypto(hash crypto.Hash) (HashAlgorithm, error) {
 	case crypto.SHA3_512:
 		return SHA3_512, nil
 	default:
-		return HashAlgorithm{}, UnableToFind
+		panic("Invalid crypto.Hash") // This shouldn't be possible
 	}
 }
 
