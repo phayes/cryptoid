@@ -123,7 +123,7 @@ var SHA3_224 = HashAlgorithm{
 	Name:      "SHA3-224",
 	OID:       asn1.ObjectIdentifier{2, 16, 840, 1, 101, 3, 4, 2, 7},
 	OIDString: "{joint-iso-itu-t(2) country(16) us(840) organization(1) gov(101) csor(3) nistalgorithm(4) hashalgs(2) 7}",
-	Hash:      crypto.SHA3_256,
+	Hash:      crypto.SHA3_224,
 }
 
 // RFC for SHA-3 is pending
