@@ -230,33 +230,33 @@ func HashAlgorithmByCrypto(hash crypto.Hash) HashAlgorithm {
 	}
 }
 
-func SignatureAlgorithmByX509(sig x509.SignatureAlgorithm) (SignatureAlgorithm, error) {
+func SignatureAlgorithmByX509(sig x509.SignatureAlgorithm) SignatureAlgorithm {
 	switch sig {
 	case x509.MD2WithRSA:
-		return MD2WithRSA, nil
+		return MD2WithRSA
 	case x509.MD5WithRSA:
-		return MD5WithRSA, nil
+		return MD5WithRSA
 	case x509.SHA1WithRSA:
-		return SHA1WithRSA, nil
+		return SHA1WithRSA
 	case x509.SHA256WithRSA:
-		return SHA256WithRSA, nil
+		return SHA256WithRSA
 	case x509.SHA384WithRSA:
-		return SHA384WithRSA, nil
+		return SHA384WithRSA
 	case x509.SHA512WithRSA:
-		return SHA512WithRSA, nil
+		return SHA512WithRSA
 	case x509.DSAWithSHA1:
-		return DSAWithSHA1, nil
+		return DSAWithSHA1
 	case x509.DSAWithSHA256:
-		return DSAWithSHA256, nil
+		return DSAWithSHA256
 	case x509.ECDSAWithSHA1:
-		return ECDSAWithSHA1, nil
+		return ECDSAWithSHA1
 	case x509.ECDSAWithSHA256:
-		return ECDSAWithSHA256, nil
+		return ECDSAWithSHA256
 	case x509.ECDSAWithSHA384:
-		return ECDSAWithSHA384, nil
+		return ECDSAWithSHA384
 	case x509.ECDSAWithSHA512:
-		return ECDSAWithSHA512, nil
+		return ECDSAWithSHA512
 	default:
-		return SignatureAlgorithm{}, UnableToFind
+		panic("Invalid x509.SignatureAlgorithm") // This shouldn't be possible
 	}
 }
